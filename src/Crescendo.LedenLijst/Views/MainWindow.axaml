@@ -10,24 +10,36 @@
     <DockPanel Margin="12">
 
         <!-- Toolbar -->
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" Margin="0,0,0,10">
-            <Button Name="OpenFileButton" Content="Bestand openen…" Click="OnOpenFileClick" />
+        <WrapPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Name="OpenFileButton" Content="Bestand openen…" Click="OnOpenFileClick" Margin="0,0,8,4" />
 
-            <TextBlock Text="Weergave:" VerticalAlignment="Center" Margin="16,0,0,0" />
+            <TextBlock Text="Weergave:" VerticalAlignment="Center" Margin="16,0,8,4" />
             <ComboBox Name="FilterComboBox"
                       ItemsSource="{Binding FilterOptions}"
                       SelectedItem="{Binding SelectedFilterOption}"
-                      MinWidth="230" />
+                      MinWidth="200"
+                      Margin="0,0,8,4" />
 
-            <TextBlock Text="Kolommen:" VerticalAlignment="Center" Margin="16,0,0,0" />
-            <Button Content="Alles aan" Click="OnSelectAllColumnsClick" />
-            <Button Content="Alles uit" Click="OnDeselectAllColumnsClick" />
+            <TextBlock Text="Donateur vanaf lidnummer:" VerticalAlignment="Center" Margin="16,0,8,4" />
+            <NumericUpDown Name="DonateurGrensInput"
+                            Value="10000"
+                            Minimum="0"
+                            Maximum="999999"
+                            Increment="1"
+                            FormatString="0"
+                            ShowButtonSpinner="False"
+                            Width="130"
+                            Margin="0,0,8,4" />
 
-            <TextBlock Text="Exporteren:" VerticalAlignment="Center" Margin="16,0,0,0" />
-            <Button Name="ExportCsvButton" Content="CSV" Click="OnExportCsvClick" />
-            <Button Name="ExportPdfButton" Content="PDF" Click="OnExportPdfClick" />
-            <Button Name="ExportOdsButton" Content="ODS" Click="OnExportOdsClick" />
-        </StackPanel>
+            <TextBlock Text="Kolommen:" VerticalAlignment="Center" Margin="16,0,8,4" />
+            <Button Content="Alles aan" Click="OnSelectAllColumnsClick" Margin="0,0,8,4" />
+            <Button Content="Alles uit" Click="OnDeselectAllColumnsClick" Margin="0,0,8,4" />
+
+            <TextBlock Text="Exporteren:" VerticalAlignment="Center" Margin="16,0,8,4" />
+            <Button Name="ExportCsvButton" Content="CSV" Click="OnExportCsvClick" Margin="0,0,8,4" />
+            <Button Name="ExportPdfButton" Content="PDF" Click="OnExportPdfClick" Margin="0,0,8,4" />
+            <Button Name="ExportOdsButton" Content="ODS" Click="OnExportOdsClick" Margin="0,0,8,4" />
+        </WrapPanel>
 
         <!-- Status bar -->
         <Border DockPanel.Dock="Bottom" Margin="0,10,0,0" Padding="0,6,0,0" BorderThickness="0,1,0,0" BorderBrush="#DDDDDD">

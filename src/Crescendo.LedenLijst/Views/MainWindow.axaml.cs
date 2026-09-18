@@ -22,11 +22,13 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContextChanged += (_, _) =>
         {
-            if (ViewModel is not null)
+            if (ViewModel is { } viewModel)
             {
-                ViewModel.Columns.CollectionChanged += (_, _) => RebuildGridColumns();
+                viewModel.Columns.CollectionChanged += (_, _) => RebuildGridColumns();
+                DonateurGrensInput.Value = viewModel.DonateurGrens;
             }
         };
+        DonateurGrensInput.ValueChanged += OnDonateurGrensInputChanged;
     }
 
     private MainWindowViewModel? ViewModel => DataContext as MainWindowViewModel;
@@ -56,6 +58,14 @@ public partial class MainWindow : Window
             {
                 ViewModel.StatusMessage = $"Kon bestand niet laden: {ex.Message}";
             }
+        }
+    }
+
+    private void OnDonateurGrensInputChanged(object? sender, NumericUpDownValueChangedEventArgs e)
+    {
+        if (ViewModel is { } viewModel && e.NewValue is { } newValue)
+        {
+            viewModel.DonateurGrens = (int)newValue;
         }
     }
 

@@ -7,6 +7,8 @@ namespace Crescendo.LedenLijst.ViewModels;
 
 public partial class MainWindowViewModel : ObservableObject
 {
+    public const int DefaultDonateurGrens = 10000;
+
     private readonly MemberDataService _dataService = new();
     private List<Member> _allMembers = [];
 
@@ -19,6 +21,10 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private FilterOption _selectedFilterOption = FilterOption.Alle;
 
+    /// <summary>Lidnummer vanaf waar iemand als donateur geldt in plaats van als lid.</summary>
+    [ObservableProperty]
+    private int _donateurGrens = DefaultDonateurGrens;
+
     public ObservableCollection<ColumnInfo> Columns { get; } = [];
 
     public ObservableCollection<Member> FilteredMembers { get; } = [];
@@ -26,6 +32,8 @@ public partial class MainWindowViewModel : ObservableObject
     public IReadOnlyList<FilterOption> FilterOptions { get; } = FilterOption.All;
 
     partial void OnSelectedFilterOptionChanged(FilterOption value) => ApplyFilter();
+
+    partial void OnDonateurGrensChanged(int value) => ApplyFilter();
 
     public void LoadMembers(string path)
     {
@@ -40,11 +48,6 @@ public partial class MainWindowViewModel : ObservableObject
         }
 
         ApplyFilter();
-
-        var leden = _allMembers.Count(m => m.Type == MemberType.Lid);
-        var donateurs = _allMembers.Count(m => m.Type == MemberType.Donateur);
-        StatusMessage = $"{_allMembers.Count} rijen geladen uit {Path.GetFileName(path)} " +
-                         $"({leden} leden, {donateurs} donateurs).";
     }
 
     public void SelectAllColumns()
@@ -66,9 +69,17 @@ public partial class MainWindowViewModel : ObservableObject
     private void ApplyFilter()
     {
         FilteredMembers.Clear();
-        foreach (var member in _allMembers.Where(SelectedFilterOption.Matches))
+        foreach (var member in _allMembers.Where(m => SelectedFilterOption.Matches(m, DonateurGrens)))
         {
             FilteredMembers.Add(member);
+        }
+
+        if (_allMembers.Count > 0)
+        {
+            var leden = _allMembers.Count(m => !m.IsDonateur(DonateurGrens));
+            var donateurs = _allMembers.Count(m => m.IsDonateur(DonateurGrens));
+            StatusMessage = $"{_allMembers.Count} rijen geladen uit {Path.GetFileName(SourceFilePath)} " +
+                             $"({leden} leden, {donateurs} donateurs bij grens {DonateurGrens}).";
         }
     }
 

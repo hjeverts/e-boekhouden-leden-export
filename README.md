@@ -5,8 +5,10 @@ Desktop-app om snel een leden- of donateurlijst uit te draaien als PDF, CSV of O
 - Laadt een ledenlijst-export (.xlsx) uit de ledenadministratie.
 - Toont alle rijen in een tabel; boven elke kolom staat een selectievakje dat bepaalt
   of die kolom wordt meegenomen in de export.
-- Dropdown om te filteren: alle personen, alleen leden (lidnummer < 10000) of alleen
-  donateurs (lidnummer >= 10000).
+- Dropdown om te filteren: alle personen, alleen leden of alleen donateurs. De grens
+  tussen lid en donateur is instelbaar via een invulveld ("Donateur vanaf lidnummer",
+  standaard **10000**) — lidnummers eronder tellen als lid, erboven (of gelijk) als
+  donateur.
 - Export naar PDF, CSV (`;`-gescheiden) of ODS (OpenDocument Spreadsheet).
 - Gebouwd met [Avalonia UI](https://avaloniaui.net/) (.NET), compileert naar een
   losstaande executable voor zowel Windows als Linux (getest op Ubuntu; werkt ook op
@@ -33,9 +35,11 @@ dotnet run --project src/Crescendo.LedenLijst
 
 1. Klik op **Bestand openen…** en kies de ledenlijst-export (.xlsx).
 2. Kies bij **Weergave** of je alle personen, alleen leden, of alleen donateurs wilt zien.
-3. Vink boven de gewenste kolommen het selectievakje aan/uit (**Alles aan**/**Alles uit**
+3. Pas zo nodig **Donateur vanaf lidnummer** aan (standaard 10000) — dit bepaalt
+   direct de leden/donateurs-telling in de statusbalk en wat de filter hierboven laat zien.
+4. Vink boven de gewenste kolommen het selectievakje aan/uit (**Alles aan**/**Alles uit**
    zetten in één keer alle kolommen aan of uit).
-4. Klik op **CSV**, **PDF** of **ODS** en kies waar het bestand opgeslagen moet worden.
+5. Klik op **CSV**, **PDF** of **ODS** en kies waar het bestand opgeslagen moet worden.
 
 De export bevat alleen de aangevinkte kolommen, voor de rijen die bij de gekozen
 weergave (alle/leden/donateurs) horen.
@@ -101,7 +105,14 @@ src/Crescendo.LedenLijst/
   Models/        Member-model (incl. lid/donateur-indeling op basis van lidnummer)
   Services/      Inlezen van de .xlsx-export
   Services/Export/  CSV-, PDF- en ODS-exporters
-  ViewModels/    Kolomselectie, filter en gridstate (MVVM)
+  ViewModels/    Kolomselectie, filter, donateurgrens en gridstate (MVVM)
   Views/         Het hoofdvenster (grid + toolbar)
-data/            Voorbeeld ledenlijst-export
+data/            Lokale map voor je eigen ledenlijst-export (genegeerd door git, zie hieronder)
 ```
+
+## Ledenlijst-bestand en privacy
+
+De map `data/` staat in `.gitignore` en wordt nooit gecommit: een ledenlijst-export
+bevat persoonsgegevens (naam, adres, e-mail, IBAN, …) en hoort niet in git terecht te
+komen, ook niet in een private repository. Zet je eigen export daar lokaal neer (of
+kies 'm via **Bestand openen…** ergens anders vandaan) — git negeert de map volledig.
