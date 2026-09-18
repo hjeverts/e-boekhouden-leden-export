@@ -126,3 +126,13 @@ De map `data/` staat in `.gitignore` en wordt nooit gecommit: een ledenlijst-exp
 bevat persoonsgegevens (naam, adres, e-mail, IBAN, …) en hoort niet in git terecht te
 komen, ook niet in een private repository. Zet je eigen export daar lokaal neer (of
 kies 'm via **Bestand openen…** ergens anders vandaan) — git negeert de map volledig.
+
+## Licentie
+
+Dit project is MIT-gelicentieerd, zie [LICENSE](LICENSE).
+
+Let op: de PDF-export gebruikt [QuestPDF](https://www.questpdf.com/), dat niet onder
+een standaard open-sourcelicentie valt maar onder de QuestPDF Community License —
+gratis voor individuen en organisaties met een jaaromzet onder $1M, met een aparte
+betaalde licentie daarboven. Dit raakt niet de MIT-licentie van deze app zelf, maar is
+relevant als je deze app zelf bouwt/gebruikt binnen een grotere organisatie.
