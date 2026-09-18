@@ -73,6 +73,27 @@ Op Linux zijn voor de GUI meestal wel de gebruikelijke desktop-libraries nodig
 (fontconfig, X11 of Wayland/XWayland) — die staan standaard op zowel Debian als
 CachyOS met een desktopomgeving.
 
+## Snelste lokale build (bijv. rechtstreeks op CachyOS)
+
+Voor eigen gebruik op de machine waar je ook bouwt, is lokaal bouwen sneller dan het
+resultaat van een andere machine overzetten — en dat kan prima:
+
+- **Tijdens ontwikkeling/eigen gebruik**, zonder publish: `dotnet run --project src/Crescendo.LedenLijst`
+  (vereist de .NET SDK op die machine, geeft de snelste opstarttijd tijdens itereren).
+- **Self-contained met ReadyToRun** voor de snelste opstarttijd van een uitgeleverde build:
+  voeg `-p:PublishReadyToRun=true` toe zodat native code vooraf gecompileerd wordt
+  (geen JIT-warmup meer bij het opstarten). Dit moet je bouwen **op** (of specifiek
+  voor) hetzelfde platform als waar de app draait, dus bouwen op CachyOS zelf voor
+  gebruik op CachyOS is precies de juiste aanpak:
+
+  ```bash
+  dotnet publish src/Crescendo.LedenLijst -c Release -r linux-x64 \
+    --self-contained true \
+    -p:PublishSingleFile=true \
+    -p:PublishReadyToRun=true \
+    -o publish/linux-x64
+  ```
+
 ## Projectstructuur
 
 ```
