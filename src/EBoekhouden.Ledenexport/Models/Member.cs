@@ -13,7 +13,7 @@ public sealed class Member
     /// <summary>Derived from "Naam" — see <see cref="NameSplitter"/> for the splitting rules.</summary>
     public string Voornaam { get; }
 
-    /// <summary>Formatted as "Stam, tussenvoegsel" (e.g. "Ommeren, van") so a plain string
+    /// <summary>Formatted as "Stam, tussenvoegsel" (e.g. "Voorbeeld, van") so a plain string
     /// sort already follows the normal Dutch phone-book convention.</summary>
     public string Achternaam { get; }
 
