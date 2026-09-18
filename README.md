@@ -3,9 +3,18 @@
 Desktop-app om snel een leden- of donateurlijst (export vanuit e-Boekhouden) uit te
 draaien als PDF, CSV of ODS.
 
-- Laadt een ledenlijst-export (.xlsx) uit de ledenadministratie.
-- Toont alle rijen in een tabel; boven elke kolom staat een selectievakje dat bepaalt
-  of die kolom wordt meegenomen in de export.
+- Laadt een ledenlijst-export (.xlsx) uit de ledenadministratie — zowel een export met
+  een echte Excel-tabel als een "kale" e-Boekhouden-export zonder tabelopmaak, waarbij
+  de app zelf de header-rij (met "Lidnummer" en "Naam") opzoekt tussen eventuele
+  titel-/datumregels erboven.
+- Splitst de "Naam"-kolom automatisch in **Voornaam** en **Achternaam**, met correcte
+  afhandeling van tussenvoegsels (bv. "Gerard van Ommeren" → voornaam "Gerard",
+  achternaam "Ommeren, van") en gekoppelde achternamen (bv. "Wilja Bos-Goorhorst" blijft
+  één achternaam, wordt niet op het streepje gesplitst).
+- Toont alle rijen in een tabel, gesorteerd op achternaam en daarna voornaam (tussenvoegsels
+  tellen niet mee voor de sortering, zoals gebruikelijk in het Nederlands: "van Ommeren"
+  sorteert onder de O). Boven elke kolom staat een selectievakje dat bepaalt of die kolom
+  wordt meegenomen in de export.
 - Dropdown om te filteren: alle personen, alleen leden of alleen donateurs. De grens
   tussen lid en donateur is instelbaar via een invulveld ("Donateur vanaf lidnummer",
   standaard **10000**) — lidnummers eronder tellen als lid, erboven (of gelijk) als
@@ -103,8 +112,8 @@ resultaat van een andere machine overzetten — en dat kan prima:
 
 ```
 src/EBoekhouden.Ledenexport/
-  Models/        Member-model (incl. lid/donateur-indeling op basis van lidnummer)
-  Services/      Inlezen van de .xlsx-export
+  Models/        Member-model (incl. lid/donateur-indeling) en de voornaam/achternaam-splitser
+  Services/      Inlezen van de .xlsx-export (met of zonder Excel-tabel, header-detectie)
   Services/Export/  CSV-, PDF- en ODS-exporters
   ViewModels/    Kolomselectie, filter, donateurgrens en gridstate (MVVM)
   Views/         Het hoofdvenster (grid + toolbar)

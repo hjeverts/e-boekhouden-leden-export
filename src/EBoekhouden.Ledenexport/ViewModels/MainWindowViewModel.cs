@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Globalization;
 using CommunityToolkit.Mvvm.ComponentModel;
 using EBoekhouden.Ledenexport.Models;
 using EBoekhouden.Ledenexport.Services;
@@ -8,6 +9,9 @@ namespace EBoekhouden.Ledenexport.ViewModels;
 public partial class MainWindowViewModel : ObservableObject
 {
     public const int DefaultDonateurGrens = 10000;
+
+    private static readonly StringComparer NaamComparer =
+        StringComparer.Create(CultureInfo.GetCultureInfo("nl-NL"), ignoreCase: true);
 
     private readonly MemberDataService _dataService = new();
     private List<Member> _allMembers = [];
@@ -69,7 +73,11 @@ public partial class MainWindowViewModel : ObservableObject
     private void ApplyFilter()
     {
         FilteredMembers.Clear();
-        foreach (var member in _allMembers.Where(m => SelectedFilterOption.Matches(m, DonateurGrens)))
+        var sorted = _allMembers
+            .Where(m => SelectedFilterOption.Matches(m, DonateurGrens))
+            .OrderBy(m => m.Achternaam, NaamComparer)
+            .ThenBy(m => m.Voornaam, NaamComparer);
+        foreach (var member in sorted)
         {
             FilteredMembers.Add(member);
         }

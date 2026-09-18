@@ -10,10 +10,26 @@ public sealed class Member
 
     public int Lidnummer { get; }
 
+    /// <summary>Derived from "Naam" — see <see cref="NameSplitter"/> for the splitting rules.</summary>
+    public string Voornaam { get; }
+
+    /// <summary>Formatted as "Stam, tussenvoegsel" (e.g. "Ommeren, van") so a plain string
+    /// sort already follows the normal Dutch phone-book convention.</summary>
+    public string Achternaam { get; }
+
     public Member(IReadOnlyDictionary<string, string> fields)
     {
-        Fields = fields;
         Lidnummer = fields.TryGetValue("Lidnummer", out var raw) && int.TryParse(raw, out var n) ? n : 0;
+
+        var naam = fields.TryGetValue("Naam", out var naamValue) ? naamValue : string.Empty;
+        (Voornaam, Achternaam) = NameSplitter.Split(naam);
+
+        var extended = new Dictionary<string, string>(fields, StringComparer.OrdinalIgnoreCase)
+        {
+            ["Voornaam"] = Voornaam,
+            ["Achternaam"] = Achternaam,
+        };
+        Fields = extended;
     }
 
     /// <summary>True when this member's lidnummer is at or above the (user-configurable) donateur threshold.</summary>
