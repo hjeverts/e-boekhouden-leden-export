@@ -1,0 +1,47 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Crescendo.LedenLijst.ViewModels"
+        x:Class="Crescendo.LedenLijst.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="Crescendo Ledenlijst"
+        Width="1200" Height="750"
+        MinWidth="800" MinHeight="500">
+
+    <DockPanel Margin="12">
+
+        <!-- Toolbar -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Spacing="8" Margin="0,0,0,10">
+            <Button Name="OpenFileButton" Content="Bestand openen…" Click="OnOpenFileClick" />
+
+            <TextBlock Text="Weergave:" VerticalAlignment="Center" Margin="16,0,0,0" />
+            <ComboBox Name="FilterComboBox"
+                      ItemsSource="{Binding FilterOptions}"
+                      SelectedItem="{Binding SelectedFilterOption}"
+                      MinWidth="230" />
+
+            <TextBlock Text="Kolommen:" VerticalAlignment="Center" Margin="16,0,0,0" />
+            <Button Content="Alles aan" Click="OnSelectAllColumnsClick" />
+            <Button Content="Alles uit" Click="OnDeselectAllColumnsClick" />
+
+            <TextBlock Text="Exporteren:" VerticalAlignment="Center" Margin="16,0,0,0" />
+            <Button Name="ExportCsvButton" Content="CSV" Click="OnExportCsvClick" />
+            <Button Name="ExportPdfButton" Content="PDF" Click="OnExportPdfClick" />
+            <Button Name="ExportOdsButton" Content="ODS" Click="OnExportOdsClick" />
+        </StackPanel>
+
+        <!-- Status bar -->
+        <Border DockPanel.Dock="Bottom" Margin="0,10,0,0" Padding="0,6,0,0" BorderThickness="0,1,0,0" BorderBrush="#DDDDDD">
+            <TextBlock Text="{Binding StatusMessage}" TextWrapping="Wrap" />
+        </Border>
+
+        <!-- Grid -->
+        <DataGrid Name="MembersGrid"
+                  ItemsSource="{Binding FilteredMembers}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  GridLinesVisibility="All"
+                  CanUserResizeColumns="True"
+                  CanUserReorderColumns="False" />
+
+    </DockPanel>
+</Window>
