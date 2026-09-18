@@ -1,3 +1,7 @@
+# Ledenlijst-exports: bevatten persoonsgegevens (NAW, e-mail, IBAN, ...) en horen
+# nooit in git terecht te komen, ook niet in een private repo.
+/data/
+
 # .NET build results
 [Bb]in/
 [Oo]bj/
