@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Crescendo.LedenLijst.Services.Export;
+namespace EBoekhouden.Ledenexport.Services.Export;
 
 /// <summary>
 /// Writes semicolon-separated CSV (the delimiter Excel/LibreOffice on a Dutch locale

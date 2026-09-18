@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace Crescendo.LedenLijst.ViewModels;
+namespace EBoekhouden.Ledenexport.ViewModels;
 
 /// <summary>
 /// UI state for one column of the grid: its header text and whether the checkbox

@@ -1,7 +1,7 @@
 using Avalonia;
 using QuestPDF.Infrastructure;
 
-namespace Crescendo.LedenLijst;
+namespace EBoekhouden.Ledenexport;
 
 internal static class Program
 {

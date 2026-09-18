@@ -1,9 +1,9 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Crescendo.LedenLijst.Models;
-using Crescendo.LedenLijst.Services;
+using EBoekhouden.Ledenexport.Models;
+using EBoekhouden.Ledenexport.Services;
 
-namespace Crescendo.LedenLijst.ViewModels;
+namespace EBoekhouden.Ledenexport.ViewModels;
 
 public partial class MainWindowViewModel : ObservableObject
 {
@@ -97,5 +97,5 @@ public partial class MainWindowViewModel : ObservableObject
         return (selectedHeaders, rows);
     }
 
-    public string ExportTitle => $"Crescendo ledenlijst – {SelectedFilterOption.Label}";
+    public string ExportTitle => $"E-Boekhouden ledenexport – {SelectedFilterOption.Label}";
 }

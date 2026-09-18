@@ -1,7 +1,7 @@
 using ClosedXML.Excel;
-using Crescendo.LedenLijst.Models;
+using EBoekhouden.Ledenexport.Models;
 
-namespace Crescendo.LedenLijst.Services;
+namespace EBoekhouden.Ledenexport.Services;
 
 public sealed record LoadResult(IReadOnlyList<string> Headers, IReadOnlyList<Member> Members);
 

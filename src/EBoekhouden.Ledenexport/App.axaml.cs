@@ -1,10 +1,10 @@
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using Crescendo.LedenLijst.ViewModels;
-using Crescendo.LedenLijst.Views;
+using EBoekhouden.Ledenexport.ViewModels;
+using EBoekhouden.Ledenexport.Views;
 
-namespace Crescendo.LedenLijst;
+namespace EBoekhouden.Ledenexport;
 
 public partial class App : Application
 {

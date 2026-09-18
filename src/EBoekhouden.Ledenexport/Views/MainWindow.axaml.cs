@@ -4,11 +4,11 @@ using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Platform.Storage;
-using Crescendo.LedenLijst.Models;
-using Crescendo.LedenLijst.Services.Export;
-using Crescendo.LedenLijst.ViewModels;
+using EBoekhouden.Ledenexport.Models;
+using EBoekhouden.Ledenexport.Services.Export;
+using EBoekhouden.Ledenexport.ViewModels;
 
-namespace Crescendo.LedenLijst.Views;
+namespace EBoekhouden.Ledenexport.Views;
 
 public partial class MainWindow : Window
 {

@@ -2,7 +2,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-namespace Crescendo.LedenLijst.Services.Export;
+namespace EBoekhouden.Ledenexport.Services.Export;
 
 /// <summary>
 /// Renders the selected columns/rows as a landscape, paginated PDF table via QuestPDF.

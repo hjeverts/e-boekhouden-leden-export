@@ -1,4 +1,4 @@
-namespace Crescendo.LedenLijst.Services.Export;
+namespace EBoekhouden.Ledenexport.Services.Export;
 
 /// <summary>
 /// Writes a selected set of columns and rows to a file. All exporters share this

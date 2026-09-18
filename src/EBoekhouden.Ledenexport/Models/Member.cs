@@ -1,4 +1,4 @@
-namespace Crescendo.LedenLijst.Models;
+namespace EBoekhouden.Ledenexport.Models;
 
 /// <summary>
 /// One row from the ledenlijst. Values are kept as the formatted strings shown in the

@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EBoekhouden.Ledenexport/EBoekhouden.Ledenexport.csproj" />
+  </Folder>
+</Solution>

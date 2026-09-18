@@ -8,8 +8,8 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <AssemblyName>CrescendoLedenlijst</AssemblyName>
-    <RootNamespace>Crescendo.LedenLijst</RootNamespace>
+    <AssemblyName>EBoekhoudenLedenexport</AssemblyName>
+    <RootNamespace>EBoekhouden.Ledenexport</RootNamespace>
     <InvariantGlobalization>false</InvariantGlobalization>
   </PropertyGroup>
 

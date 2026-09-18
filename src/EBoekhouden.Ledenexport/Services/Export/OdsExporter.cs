@@ -2,7 +2,7 @@ using System.IO.Compression;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Crescendo.LedenLijst.Services.Export;
+namespace EBoekhouden.Ledenexport.Services.Export;
 
 /// <summary>
 /// Hand-rolled, minimal OpenDocument Spreadsheet (.ods) writer. An .ods file is a zip

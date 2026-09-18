@@ -1,6 +1,6 @@
-using Crescendo.LedenLijst.Models;
+using EBoekhouden.Ledenexport.Models;
 
-namespace Crescendo.LedenLijst.ViewModels;
+namespace EBoekhouden.Ledenexport.ViewModels;
 
 /// <summary>
 /// A way to narrow the grid/export down by lid vs. donateur. The lidnummer threshold

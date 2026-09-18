@@ -1,6 +1,7 @@
-# Crescendo_ledenlijst
+# E-Boekhouden Ledenexport
 
-Desktop-app om snel een leden- of donateurlijst uit te draaien als PDF, CSV of ODS.
+Desktop-app om snel een leden- of donateurlijst (export vanuit e-Boekhouden) uit te
+draaien als PDF, CSV of ODS.
 
 - Laadt een ledenlijst-export (.xlsx) uit de ledenadministratie.
 - Toont alle rijen in een tabel; boven elke kolom staat een selectievakje dat bepaalt
@@ -28,7 +29,7 @@ dotnet build
 ## Draaien tijdens ontwikkeling
 
 ```bash
-dotnet run --project src/Crescendo.LedenLijst
+dotnet run --project src/EBoekhouden.Ledenexport
 ```
 
 ## Gebruik
@@ -52,25 +53,25 @@ nodig heeft op de doelmachine.
 **Windows (x64):**
 
 ```bash
-dotnet publish src/Crescendo.LedenLijst -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o publish/win-x64
+dotnet publish src/EBoekhouden.Ledenexport -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o publish/win-x64
 ```
 
-Resultaat: `publish/win-x64/CrescendoLedenlijst.exe` (plus enkele native `.dll`'s ernaast
+Resultaat: `publish/win-x64/EBoekhoudenLedenexport.exe` (plus enkele native `.dll`'s ernaast
 die niet in het single-file bestand passen — de hele map meenemen).
 
 **Linux x64 (Debian, CachyOS, Ubuntu, …):**
 
 ```bash
-dotnet publish src/Crescendo.LedenLijst -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -o publish/linux-x64
+dotnet publish src/EBoekhouden.Ledenexport -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -o publish/linux-x64
 ```
 
-Resultaat: `publish/linux-x64/CrescendoLedenlijst` (plus enkele native `.so`'s ernaast —
+Resultaat: `publish/linux-x64/EBoekhoudenLedenexport` (plus enkele native `.so`'s ernaast —
 de hele map meenemen). Uitvoerbaar maken indien nodig met `chmod +x`.
 
 **Linux ARM64 (bv. CachyOS op ARM):**
 
 ```bash
-dotnet publish src/Crescendo.LedenLijst -c Release -r linux-arm64 --self-contained true -p:PublishSingleFile=true -o publish/linux-arm64
+dotnet publish src/EBoekhouden.Ledenexport -c Release -r linux-arm64 --self-contained true -p:PublishSingleFile=true -o publish/linux-arm64
 ```
 
 Op Linux zijn voor de GUI meestal wel de gebruikelijke desktop-libraries nodig
@@ -82,7 +83,7 @@ CachyOS met een desktopomgeving.
 Voor eigen gebruik op de machine waar je ook bouwt, is lokaal bouwen sneller dan het
 resultaat van een andere machine overzetten — en dat kan prima:
 
-- **Tijdens ontwikkeling/eigen gebruik**, zonder publish: `dotnet run --project src/Crescendo.LedenLijst`
+- **Tijdens ontwikkeling/eigen gebruik**, zonder publish: `dotnet run --project src/EBoekhouden.Ledenexport`
   (vereist de .NET SDK op die machine, geeft de snelste opstarttijd tijdens itereren).
 - **Self-contained met ReadyToRun** voor de snelste opstarttijd van een uitgeleverde build:
   voeg `-p:PublishReadyToRun=true` toe zodat native code vooraf gecompileerd wordt
@@ -91,7 +92,7 @@ resultaat van een andere machine overzetten — en dat kan prima:
   gebruik op CachyOS is precies de juiste aanpak:
 
   ```bash
-  dotnet publish src/Crescendo.LedenLijst -c Release -r linux-x64 \
+  dotnet publish src/EBoekhouden.Ledenexport -c Release -r linux-x64 \
     --self-contained true \
     -p:PublishSingleFile=true \
     -p:PublishReadyToRun=true \
@@ -101,7 +102,7 @@ resultaat van een andere machine overzetten — en dat kan prima:
 ## Projectstructuur
 
 ```
-src/Crescendo.LedenLijst/
+src/EBoekhouden.Ledenexport/
   Models/        Member-model (incl. lid/donateur-indeling op basis van lidnummer)
   Services/      Inlezen van de .xlsx-export
   Services/Export/  CSV-, PDF- en ODS-exporters
