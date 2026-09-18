@@ -8,12 +8,12 @@ draaien als PDF, CSV of ODS.
   de app zelf de header-rij (met "Lidnummer" en "Naam") opzoekt tussen eventuele
   titel-/datumregels erboven.
 - Splitst de "Naam"-kolom automatisch in **Voornaam** en **Achternaam**, met correcte
-  afhandeling van tussenvoegsels (bv. "Gerard van Ommeren" → voornaam "Gerard",
-  achternaam "Ommeren, van") en gekoppelde achternamen (bv. "Wilja Bos-Goorhorst" blijft
+  afhandeling van tussenvoegsels (bv. "Piet van Voorbeeld" → voornaam "Piet",
+  achternaam "Voorbeeld, van") en gekoppelde achternamen (bv. "Anna Bakker-Jansen" blijft
   één achternaam, wordt niet op het streepje gesplitst).
 - Toont alle rijen in een tabel, gesorteerd op achternaam en daarna voornaam (tussenvoegsels
-  tellen niet mee voor de sortering, zoals gebruikelijk in het Nederlands: "van Ommeren"
-  sorteert onder de O). Boven elke kolom staat een selectievakje dat bepaalt of die kolom
+  tellen niet mee voor de sortering, zoals gebruikelijk in het Nederlands: "van Voorbeeld"
+  sorteert onder de V). Boven elke kolom staat een selectievakje dat bepaalt of die kolom
   wordt meegenomen in de export.
 - Dropdown om te filteren: alle personen, alleen leden of alleen donateurs. De grens
   tussen lid en donateur is instelbaar via een invulveld ("Donateur vanaf lidnummer",
